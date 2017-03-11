@@ -1,0 +1,103 @@
+conky.config = {
+	background = true,
+	double_buffer = true,
+
+	alignment = 'top_right',
+
+	border_width = 1,
+	cpu_avg_samples = 2,
+	default_color = 'white',
+	default_outline_color = 'white',
+	default_shade_color = 'white',
+	draw_borders = false,
+	draw_graph_borders = true,
+	draw_outline = false,
+	draw_shades = false,
+
+	gap_x = 10,
+	gap_y = 0,
+	net_avg_samples = 2,
+	no_buffers = true,
+	out_to_console = false,
+	out_to_stderr = false,
+	extra_newline = false,
+
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_colour = '#000000',
+	own_window_argb_visual = true,
+	own_window_argb_value = 0,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	minimum_width = 200, minimum_height = 10,
+	stippled_borders = 0,
+	update_interval = 2.0,
+	uppercase = false,
+	use_spacer = 'none',
+
+	show_graph_scale = false,
+	show_graph_range = false,
+
+	use_xft = true,
+	xftalpha = 0.1,
+	font = 'Droid Sans:size=10',
+	--#Green/Blue
+	color0 = 'white',
+	color1 = '#00FFA3',
+	color2 = '#00A3FF',
+	color3 = 'grey',
+	--#Purple/Pink
+	--color0 = 'white',
+	--color1 = '#ff0080',
+	--color2 = '#cc00cc',
+	--color3 = 'grey',
+	--#Blue/Grey
+	--color0 = 'white',
+	--color1 = '#0080ff',
+	--color2 = '#00aabb',
+	--color3 = 'grey',
+
+};
+
+conky.text = [[
+${color0}${alignc}${font DejaVu Sans Monospace bold:size=30}${time %H:%M}
+${color3}${alignc}${font Droid Sans:size=10}${voffset -30}${time %^a - %d/%m/%Y}
+${color1}SYSTEM ${hr}${color}
+${color2}Kernel ${color}${alignr}${kernel}
+${color2}Processes ${color}${alignr}${processes}
+${color2}Uptime ${color}${alignr}${uptime}
+${color2}Temperature ${color}${alignr}${acpitemp}°C
+
+${color1}TOP${hr}
+${color2}CPU ${alignr}${cpu}%${color}
+${top name 1}${alignr}${top cpu 1}%
+${top name 2}${alignr}${top cpu 2}%
+${top name 3}${alignr}${top cpu 3}%
+
+${color2}RAM ${alignr}${mem}${color}
+${top_mem name 1}${alignr}${top cpu 1}%
+${top_mem name 2}${alignr}${top cpu 2}%
+${top_mem name 3}${alignr}${top cpu 3}%
+
+${color1}CPU ${hr}${color2}
+${cpubar cpu0 5,}${color}
+${cpu cpu0}% ${alignr}${freq_g}GHz
+
+${color1}RAM ${hr}${color2}
+${membar 5,}${color}
+${memperc}% ${alignr} ${mem} / ${memmax}
+
+${color1}NETWORK ${hr}${color}${if_existing /proc/net/route wlp2s0}
+${color2}Interface ${color}${alignr}${gw_iface}
+${color2}IP ${color}${alignr}${addr wlp2s0}
+${color2}AP ${color}${alignr}${wireless_essid wlp2s0}
+${color2}Signal ${color}${alignr}${wireless_link_qual_perc wlp2s0}%
+${color2}Download ${color}${alignr}${downspeed wlp2s0}[${totaldown wlp2s0}]
+${color2}Upload ${color}${alignr}${upspeed wlp2s0}[${totalup wlp2s0}]
+${else}
+${color2}Not connected to ${color0}WIFI
+${endif}
+
+
+]];

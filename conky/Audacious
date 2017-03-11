@@ -1,0 +1,80 @@
+conky.config = {
+	background = true,
+	double_buffer = true,
+
+	alignment = 'bottom_left',
+
+	border_width = 1,
+	cpu_avg_samples = 2,
+	default_color = 'white',
+	default_outline_color = 'white',
+	default_shade_color = 'white',
+	draw_borders = false,
+	draw_graph_borders = true,
+	draw_outline = false,
+	draw_shades = false,
+
+	gap_x = 10,
+	gap_y = 20,
+	net_avg_samples = 2,
+	no_buffers = true,
+	out_to_console = false,
+	out_to_stderr = false,
+	extra_newline = false,
+
+	own_window = true,
+	own_window_type = 'normal',
+	own_window_transparent = true,
+	own_window_colour = '#000000',
+	own_window_argb_visual = true,
+	own_window_argb_value = 0,
+	own_window_hints = 'undecorated,below,sticky,skip_taskbar,skip_pager',
+
+	minimum_width = 200, minimum_height = 50,
+	stippled_borders = 0,
+	update_interval = 2.0,
+	uppercase = false,
+	use_spacer = 'none',
+
+	show_graph_scale = false,
+	show_graph_range = false,
+
+	use_xft = true,
+	xftalpha = 0.1,
+	font = 'Droid Sans:size=10',
+	--#Green/Blue
+	color0 = 'white'
+	color1 = '#00FFA3'
+	color2 = '#00A3FF'
+	color3 = 'grey'
+	--#Purple/Pink
+	--color0 = 'white',
+	--color1 = '#ff0080',
+	--color2 = '#cc00cc',
+	--color3 = 'grey',
+	--#Blue/Grey
+	--color0 = 'white',
+	--color1 = '#0080ff',
+	--color2 = '#00aabb',
+	--color3 = 'grey',
+
+};
+
+conky.text = [[
+${if_match "Audacious is running" == "${exec $HOME/.conky/ZetaMek/CheckAudacious.sh}"}
+${color0}${alignc}${font Droid Sans:size=18}${exec audtool --current-song-output-length} / ${exec audtool --current-song-length}
+${font Droid Sans:size=10}${voffset -20}
+${color1}TITLE $hr
+${color2}${alignr}${exec audtool --current-song-tuple-data title}
+${color1}ARTIST $hr
+${color3}${alignr}${exec audtool --current-song-tuple-data artist}
+${color1}ALBUM $hr
+${color3}${alignr}${exec audtool --current-song-tuple-data album}
+${color1}GENRE $hr
+${color3}${alignr}${exec audtool --current-song-tuple-data genre}
+${color1}VOLUME $hr
+${color3}${alignr}${exec audtool --get-volume}%
+${else}
+${color1}Audacious ${color2}is not running
+${endif}
+]];
