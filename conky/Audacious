@@ -43,10 +43,10 @@ conky.config = {
 	xftalpha = 0.1,
 	font = 'Droid Sans:size=10',
 	--#Green/Blue
-	color0 = 'white'
-	color1 = '#00FFA3'
-	color2 = '#00A3FF'
-	color3 = 'grey'
+	color0 = 'white',
+	color1 = '#00FFA3',
+	color2 = '#00A3FF',
+	color3 = 'grey',
 	--#Purple/Pink
 	--color0 = 'white',
 	--color1 = '#ff0080',
